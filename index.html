@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nils Marion</title>
+    <link rel="shortcut icon" href="images/favicon/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="logo">Nils<br>Marion</a>
+
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#info">About Me</a></li>
+              </ul>
+        </nav>
+    </div>
+    
+    <div class="light-ray"></div>
+
+    <div class="container">
+        <div class="hand-wrapper">
+            <div class="hand-image">
+              <img src="./images/hand.png" alt="Hand Image" class="hand-img">
+            </div>
+          </div>
+          <div class="text-section">
+            <h1>Hello<span class="exclamation-top">!</span><span class="exclamation-dot">.</span></h1>
+            <p>
+              I'm all about working on
+              <br><span class="hover-span" id="animation">animation</span>
+              <br><span class="hover-span" id="illustrations">illustration</span>
+              <br>& <span class="hover-span" id="filmmaking">filmmaking</span>
+            </p>
+          </div>
+          
+          <!-- The images need to come after the spans for the sibling combinator to work -->
+          <img src="./images/ae_noise.png" alt="After Effects Logo" class="bg-image" id="animation-img">
+          <img src="./images/ai_noise.png" alt="Illustrator Logo" class="bg-image" id="illustration-img">
+          <img src="./images/ps_noise.png" alt="Photoshop Logo" class="bg-image" id="photoshop-img">
+          <img src="./images/pr_noise.png" alt="Premiere Pro Logo" class="bg-image" id="filmmaking-img">
+          
+      </div>
+
+      <script src="script.js"></script>
+</body>
+</html>

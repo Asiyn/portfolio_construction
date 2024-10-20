@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&display=swap');
+@font-face {
+    font-family: 'Quick Peachy';
+    src: url('./fonts/QuickPeachy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --background: #131313;
+    --border: #2b2b2b;
+    --text: #f0f0f0;
+    --light-accent: #00ffff;
+    --dark-accent: #00adb5;
+
+    --pink: #9D50BB;
+    --purple: #6E48AA;
+    --pink-background: rgba(157, 80, 187, 0.5);
+    --yellow: #FAD961;
+    --orange: #F76B1C;
+    --orange-background: rgb(247, 107, 28, 0.4);
+    --light-green: #8dd1ae;
+    --dark-green: #56af5f;
+    --green-background: rgba(130, 204, 137, 0.4);
+    --light-blue: #8dc7d1;
+    --dark-blue: #5666af;
+    --blue-background: rgba(130, 189, 204, 0.4);
+}
+
+@keyframes background-pan {
+    from {
+      background-position: 0% center;
+    }
+    
+    to {
+      background-position: -200% center;
+    }
+}
+
+::selection {
+    background-color: var(--dark-accent);
+    color: var(--background);
+}
+
+* {
+    margin: 1.5% 3% 0% 3.5%;
+    padding: 0;
+    color: var(--text);
+}
+
+html, body {
+    scroll-behavior: smooth;
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    background-color: var(--background);
+    overflow-x: hidden;
+    cursor: default;
+}
+
+h1 {
+    font-family: 'Quick Peachy', serif;
+    font-size: 96px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+.header {
+    width: 100%;
+    z-index: 100;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+}
+
+.logo {
+    font-family: 'Quick Peachy', serif;
+    font-size: 64px;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    padding: 2px;
+    transition: color 0.5s ease;
+}
+
+.logo::after {
+    content: '.';
+    margin-left: 1px;
+    color: var(--dark-accent);
+    transition: color 0.5s ease;
+}
+
+/* Bar animation underneath the entire logo */
+.logo::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 0;
+    height: 3px;
+    background-color: var(--dark-accent);
+    opacity: 0.5;
+    transition: width 0.35s ease, height 0.5s ease;
+    z-index: -1; /* Ensures it's behind the text */
+}
+
+.logo:hover::before {
+    width: 100%;
+    left: 0;
+    height: 100%; /* Expands to cover the entire logo height */
+    transition: width 0.3s ease, height 0.35s ease 0.5s;
+}
+
+.logo:not(:hover)::before {
+    height: 3px; /* Shrink first */
+    transition: height 0.5s ease, width 0.35s ease 0.5s; /* Delay the width retract */
+    width: 0; /* Retract the width after height shrinks */
+}
+
+.logo:hover {
+    color: var(--background); /* Text matches background color */
+    transition-delay: 0.5s;
+}
+
+.logo:hover::after {
+    color: var(--text); /* Change the dot to match the background as well */
+    transition-delay: 0.5s;
+}
+
+
+nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    font-size: 24px;
+}
+
+.nav-list li {
+    margin: 0;
+}
+
+.nav-list a {
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+    white-space: nowrap;
+    color: var(--text);
+    font-weight: 400;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    opacity: 0.5;
+    height: 2px;
+    background-color: var(--dark-accent);
+    transition: width 0.4s ease, left 0.4s ease;
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* BODY */
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 0;
+    padding: 0;
+    grid-column-gap: 20px;
+    height: 80vh;
+    overflow: visible;
+}
+
+.container * {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+/* HAND */
+
+.hand-wrapper {
+    position: relative;
+    z-index: 2; /* Ensure the hand and light ray are on top of other elements */
+    margin: auto 0;
+}
+
+.hand-image {
+    /* background-image: url(./images/hand.png); */
+    display: flex;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-content: center;
+    justify-content: center;
+}
+
+.hand-img {
+    width: 80%;
+    height: auto;
+    filter: drop-shadow(-10px 10px 5px #00000065);
+    transition: transform 0.25s ease-out;
+    transform-origin: center;
+    
+}
+
+/* LIGHT */
+
+.light-ray {
+    position: absolute;
+    top: 100px;
+    left: 10%;
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 2600px solid transparent;
+    border-top: 400px solid rgba(255, 255, 255, 0.035);
+    transform: rotate(-7.5deg);
+    transform-origin: -60% 450%;
+    pointer-events: none;
+    z-index: 10;
+    filter: blur(50px);
+}
+
+/* TEXT */
+
+.text-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    margin: 0 auto;
+    height: 100%;
+    z-index: 15;
+    line-height: 1.25;
+    position: relative;
+}
+
+.text-section p, .text-section h1 {
+    text-align: left;
+}
+
+.text-section h1 {
+    position: relative;
+    margin: 0;
+    font-size: 120px;
+    filter: drop-shadow(-10px 10px 5px #00000065);
+}
+
+.exclamation-top {
+    color: var(--text);
+}
+
+.exclamation-dot {
+    color: var(--dark-accent);
+    position: relative;
+    left: -27.5px;
+    top: 1px;
+    font-size: 1.1em;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.text-section p {
+    font-size: 38px;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.text-section p span {
+    font-weight: 700;
+    text-transform: capitalize;
+    opacity: 1;
+}
+
+.text-section span {
+    transition: transform 0.4s ease, text-shadow 0.4s ease;
+}
+
+.text-section p span:hover {
+    transform: scale(1.2) translateZ(10px) translateX(20px);
+    cursor: pointer;
+}
+
+/* SPAN ANIMATIONS */
+
+.text-section p span {
+    font-weight: 700;
+    text-transform: capitalize;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to right, var(--text), var(--text)); /* Default color */
+    background-clip: text;
+    color: transparent;
+    transition: all 0.15s ease-in-out, opacity 0.2s ease;
+    opacity: 1;
+}
+
+.text-section p span:hover ~ span, 
+.text-section p span:hover ~ br ~ span {
+    opacity: 0.3;
+}
+
+.text-section p span:hover {
+    transform: scale(1.2) translateZ(10px) translateX(20px);
+    cursor: pointer;
+}
+
+#animation:hover {
+    animation: background-pan 1.5s linear infinite;
+    background: linear-gradient(to right, var(--pink), var(--purple), var(--pink));
+    text-shadow: -2px 4px 6px var(--pink-background);
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+}
+
+#illustrations:hover {
+    animation: background-pan 1.5s linear infinite;
+    background: linear-gradient(to right, var(--yellow), var(--orange), var(--yellow));
+    background-size: 200%;
+    background-clip: text;
+    color: transparent;
+    text-shadow: -2px 4px 6px var(--orange-background);
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+}
+
+#filmmaking:hover {
+    animation: background-pan 1.5s linear infinite;
+    background: linear-gradient(to right, var(--light-blue), var(--dark-blue), var(--light-blue));
+    background-size: 200%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    text-shadow: -2px 4px 6px var(--blue-background);
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+}
+
+.text-section p span {
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease-in-out;
+}
+
+.text-section p:hover span {
+    opacity: 0.3;
+}
+
+.text-section p span:hover {
+    opacity: 1;
+}
+
+/* IMAGES APPEAR HOVER */
+
+.bg-image {
+    position: absolute;
+    width: 100px; /* Adjust based on image size */
+    opacity: 0;
+    transform: translateY(30px) scale(0.5) rotate(0deg);
+    transition: all 0.3s ease-out;
+    z-index: 0;
+    
+}
+
+#animation-img {
+    filter: hue-rotate(40deg);
+}
+
+#photoshop-img {
+    /* filter: hue-rotate(170deg); */
+    filter: hue-rotate(0deg);
+    transition-delay: 0.09s;
+}
+
+#filmmaking-img {
+    /* filter: hue-rotate(200deg); */
+    filter: hue-rotate(0deg);
+}
+
+.hover-span {
+    position: relative;
+    z-index: 0; /* Keep the text above the image */
+}
